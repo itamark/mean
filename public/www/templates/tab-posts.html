@@ -1,0 +1,18 @@
+<ion-view view-title="Chats">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right card" ng-repeat="post in posts" type="item-text-wrap" href="#/tab/posts/{{post._id}}">
+        <!--<div class="card">-->
+          <!--<div class="item item-text-wrap">-->
+            <!--This is a basic Card which contains an item that has wrapping text.-->
+          <!--</div>-->
+        <!--</div>-->
+        {{post.content}}
+        <ion-option-button class="button-assertive" ng-click="remove(post._id)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

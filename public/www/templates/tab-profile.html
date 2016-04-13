@@ -1,0 +1,41 @@
+<ion-view title="Profile">
+  <ion-content padding="true" class="has-header">
+      <div class="card">
+          <div class="item item-body">
+              <div class="row">
+                  <div class="col col-50 col-offset-25">
+                      <img class="full-image" ng-src="{{user.profileImageURL}}">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col col-50 col-offset-25 text text-center">
+                      <h2>{{user.displayName}}</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col text-center">
+
+          <ion-list ng-repeat="post in posts | orderBy:'-dt_created'" >
+            <ion-item class="item item-avatar" href="#">
+              <img ng-src="{{user.profileImageURL}}">
+              <h2>{{user.displayName}}</h2>
+              <p>{{post.content}}</p>
+            </ion-item>
+          </ion-list>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-center">
+          <a href="" class="button button-full button-dark" ng-click="logout()">Log out</a>
+        </div>
+      </div>
+
+  </ion-content>
+
+</ion-view>

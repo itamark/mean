@@ -1,0 +1,19 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Comment</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="close()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="formCreateComment" ng-submit="saveComment()">
+      <label class="item item-input">
+        <textarea ng-model="commentForm.content"  placeholder="What's on your mind?" required></textarea>
+      </label>
+
+      <label class="item">
+        <button class="button button-block button-positive" type="submit" ng-disabled="formCreateComment.$invalid">Submit</button>
+      </label>
+    </form>
+  </ion-content>
+</ion-modal-view>

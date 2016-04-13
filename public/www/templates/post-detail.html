@@ -1,14 +1,39 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
 <ion-view view-title="{{post.name}}">
   <ion-content class="padding">
-    <img ng-src="{{post.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{post.content}}
-    </p>
+    <div class="card">
+      <div class="item item-avatar item-text-wrap">
+        <img ng-src="{{post.profileImageURL}}">
+        <h2>{{post.displayName}}</h2>
+        <p>{{post.dt_created | date:'MM-dd-yyyy'}}</p>
+      </div>
+
+      <div class="item item-text-wrap">
+        <h2 style="color:grey;">
+          {{post.content}}
+        </h2>
+        <p>
+          <!-- <a href="#" class="subdued">1 Like</a> -->
+          <a href="#" class="subdued" ng-click="open()">{{post.comments}} Comments</a>
+        </p>
+      </div>
+    </div>
+    <form name="formCreateComment" ng-submit="saveComment()">
+      <label class="item item-input">
+        <textarea ng-model="commentForm.content"  placeholder="What's on your mind?" required></textarea>
+      </label>
+      <button class="button button-block button-positive" type="submit" ng-disabled="formCreateComment.$invalid">Submit</button>
+
+      <!--<label class="item">-->
+        <!--<button class="button button-block button-positive" type="submit" ng-disabled="formCreateComment.$invalid">Submit</button>-->
+      <!--</label>-->
+    </form>
+    <div class="list">
+      <div class="item item-avatar item-text-wrap" ng-repeat="comment in comments">
+        <img ng-src="{{comment.profileImageURL}}">
+        <p>{{comment.displayName}}</p>
+        <h2>{{comment.content}}</h2>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

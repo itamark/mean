@@ -1,28 +1,26 @@
-<ion-view view-title="Account"  hide-nav-bar="true">
-  <!--<ion-content>-->
-    <!--<div class="content padding">-->
-      <!--<div class="content padding">-->
-      <!--<button class="button button-positive" ng-click="signin()">-->
-        <!--LinkedIn Login-->
-      <!--</button>-->
-    <!--</div>-->
+<ion-view view-title="Login" hide-nav-bar="true">
+  <ion-content padding="false">
 
-  <!--</ion-content>-->
+    <div class="spacer text-center" style="height: 25%;"></div>
 
-  <ion-content class="center">
-    <!--<div class="row">-->
-      <!--<div class="col">-->
-    <div class="col">
-      <div class="row vh-100">
-        <div class="col col-center">
-          <button class="button button-block button-positive"  ng-click="login()">
-            LinkedIn Login
-          </button>
-        </div>
+    <div class="row">
+      <div class="col text-center">
+        <h1>CMGR</h1>
       </div>
     </div>
 
-      <!--</div>-->
-    <!--</div>-->
+    <div class="spacer text-center" style="height: 25%;"></div>
+
+    <div class="row">
+      <div class="col text-center">
+        <button class="button button-full button-positive" ng-click="loginWithFacebook()">
+          Login with Facebook
+        </button>
+        <button class="button button-full button-positive" ng-click="authenticate('facebook')">
+          Login with Facebook Satellizer
+        </button>
+      <div>
+    </div>
+
   </ion-content>
 </ion-view>

@@ -1,32 +1,23 @@
 <ion-view view-title="New Post">
   <ion-content class="padding">
-    <div class="list">
-      <!--<label class="item item-input">-->
-        <!--<input ng-model="post.title" type="text" placeholder="Remind me to...">-->
-      <!--</label>-->
-
-      <!--<label class="item item-input">-->
-        <!--<input type="text" placeholder="Last Name">-->
-      <!--</label>-->
-      <label class="item item-input">
-        <textarea ng-model="post.content"  placeholder="What's on your mind?"></textarea>
-      </label>
-      <!--<div class="button-bar">-->
-        <!--<ionic-datepicker class="button" input-obj="datepickerObject">-->
-          <!--<button class="button button-block button-positive"> {{post.date | date:datepickerObject.dateFormat}}</button>-->
-        <!--</ionic-datepicker>-->
-        <!--<ionic-timepicker class="button" input-obj="timePickerObject">-->
-          <!--<button class="button button-block button-positive overflowShow">-->
-            <!--&lt;!&ndash;{{timePickerObject.inputEpochTime | date:'yyyy-MM-dd HH:mm:ss Z'}}&ndash;&gt;-->
-            <!--<standard-time-meridian etime='post.time'></standard-time-meridian>-->
-          <!--</button>-->
-        <!--</ionic-timepicker>-->
-      <!--</div>-->
-
+    <div class="item">
+        <div class="row">
+          <div class="col col-50 col-offset-25">
+              <img class="full-image" ng-src="{{user.profileImageURL}}">
+          </div>
+        </div>
+        <div class="text text-center">
+          <h2>{{user.displayName}}</h2>
+        </div>
     </div>
+
+    <label class="item item-input">
+      <textarea ng-model="post.content"  placeholder="What's on your mind?"></textarea>
+    </label>
+
     <div class="button-bar">
       <button class="button button-positive" ng-click="setPost()">
-        Go!
+        Submit
       </button>
     </div>
 

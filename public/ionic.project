@@ -5,6 +5,10 @@
         {
               "path": "/api",
               "proxyUrl": "http://localhost:4000/api"
-            }
+            },
+            {
+                          "path": "/auth",
+                          "proxyUrl": "http://localhost:4000/auth"
+                        }
       ]
 }

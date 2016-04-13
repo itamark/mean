@@ -1,5 +1,8 @@
 var Post = require('./models/post');
+var passport = require('passport');
+
 module.exports = function (app) {
+
 // get all posts
     app.get('/api/posts', function (req, res) {
 
@@ -71,9 +74,23 @@ module.exports = function (app) {
     });
 
 
+    app.get('/auth/linkedin',
+        passport.authenticate('linkedin'),
+        function(req, res){
+            // The request will be redirected to LinkedIn for authentication, so this
+            // function will not be called.
+        });
 
-
-
+    app.get('/auth/linkedin/callback',
+        passport.authenticate('linkedin', { failureRedirect: '/login' }),
+        function(req, res) {
+            console.log(res);
+            res.redirect('/');
+        });
+    function ensureAuthenticated(req, res, next) {
+        if (req.isAuthenticated()) { return next(); }
+        res.redirect('/login');
+    }
 
 
 

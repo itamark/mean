@@ -3,7 +3,7 @@ angular.module('starter.services', [])
     return {
       login: function() {
         var deferred = $q.defer();
-        $http.get('/api/posts').then(function(res){
+        $http.get('/auth/linkedin').then(function(res){
             deferred.resolve(res.data);
           },
           function(err){

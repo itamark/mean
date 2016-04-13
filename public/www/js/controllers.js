@@ -58,8 +58,10 @@ angular.module('starter.controllers', [])
 })
   .controller('LoginCtrl', function($rootScope, $scope, Users, $state) {
 
-$scope.liLogin = function(){
-
+$scope.login = function(){
+  Users.login().then(function(res){
+console.log(res);
+  });
 };
 
 

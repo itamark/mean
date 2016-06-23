@@ -1,18 +1,14 @@
 <ion-view view-title="CMGR">
-  <ion-content>
-    <div class="list card" ng-repeat="(key,post) in posts" type="item-text-wrap"
-      ui-sref="tab.post-detail({userId:post.uid, postId:key})">
+  <ion-content padding="true">
+    <div class="list card" ng-repeat="(key,post) in posts | orderBy:'dt_created':true" type="item-text-wrap" ui-sref="tab.post-detail({userId:post.uid, postId:key})">
       <div class="item item-avatar">
         <img ng-src="{{post.profileImageURL}}">
         <h2>{{post.displayName}}</h2>
-        <p>{{post.dt_created | date:'MM-dd-yyyy'}}</p>
+        <p class="date"><i class="ion-ios-calendar-outline"></i> {{post.dt_created | date:'MM-dd-yyyy'}}</p>
       </div>
-
       <div class="item item-body">
         <p>{{post.content}}</p>
-        <p>
-          <!-- <a href="#" class="subdued">1 Like</a> -->
-          <a href="#" class="subdued">{{post.comments}} Comments</a>
+        <p class="comment"><a href="#" class="subdued">{{post.comments}} Comments</a>
 
         </p>
       </div>

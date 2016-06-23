@@ -1,26 +1,12 @@
-<ion-view view-title="Login" hide-nav-bar="true">
-  <ion-content padding="false">
-
-    <div class="spacer text-center" style="height: 25%;"></div>
-
-    <div class="row">
-      <div class="col text-center">
-        <h1>CMGR</h1>
-      </div>
-    </div>
-
-    <div class="spacer text-center" style="height: 25%;"></div>
-
-    <div class="row">
-      <div class="col text-center">
-        <button class="button button-full button-positive" ng-click="loginWithFacebook()">
-          Login with Facebook
-        </button>
-        <button class="button button-full button-positive" ng-click="authenticate('facebook')">
-          Login with Facebook Satellizer
-        </button>
-      <div>
-    </div>
-
-  </ion-content>
+<ion-view view-title="Login" hide-nav-bar="true" class="login-screen">
+    <ion-content padding="false">
+        <div class="login-container">
+            <div class="logo">
+                <h1></h1>
+                <button class="button button-full button-facebook" ng-click="loginWithFacebook()">
+                   <i class="ion-social-facebook"></i>  Login with Facebook
+                </button>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

@@ -5,12 +5,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
-    -->
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -22,7 +19,10 @@
 
     <script src="lib/firebase/firebase.js"></script>
     <script src="lib/angularfire/dist/angularfire.js"></script>
-
+    <script>
+      Firebase.util.logLevel('log');
+      Firebase.util.log('hello world');
+    </script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
@@ -39,7 +39,7 @@
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-stable">
+    <ion-nav-bar class="bar-positive" align-title="center">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>

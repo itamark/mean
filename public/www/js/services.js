@@ -15,6 +15,11 @@ angular.module('starter.services', [])
 		return myUID;
 	};
 
+  Auth.isOwnProfile = function(uid){
+    console.log(uid, myUID)
+    return uid === myUID;
+  };
+
 	Auth.loginWithFacebook = function(){
 		var def = $q.defer();
 
@@ -28,7 +33,9 @@ angular.module('starter.services', [])
 					def.resolve(authData);
 				});
 			}
-		});
+		}, {
+      scope: "public_profile,email,user_friends"
+    });
 		return def.promise;
 	};
 
@@ -60,13 +67,14 @@ angular.module('starter.services', [])
 		return def.promise;
 	};
 
+
 	Auth.updateProfile = function(authData){
 		var def = $q.defer();
 		myRef.child('users').child(authData.facebook.id).set({
-			uid							: authData.facebook.id,
-			displayName			: authData.facebook.displayName,
-			profileImageURL	: authData.facebook.profileImageURL,
-      email: authData.facebook.email
+			uid							: authData.facebook.id ? authData.facebook.id : null,
+			displayName			: authData.facebook.displayName ? authData.facebook.displayName : null,
+			profileImageURL	: authData.facebook.profileImageURL ? authData.facebook.profileImageURL:  null,
+      email: authData.facebook.email ?  authData.facebook.email :  null
     });
 		def.resolve();
 		return def.promise;
@@ -76,6 +84,7 @@ angular.module('starter.services', [])
 		var def = $q.defer();
 
 		myRef.child("users").child(userId).once("value", function(snapshot){
+      console.log(snapshot);
 			var user = snapshot.val();
 			def.resolve(user);
 		}, function (errorObject) {
@@ -90,7 +99,13 @@ angular.module('starter.services', [])
 
 
 .factory('Users', function($http, $q){
-    return {
+  var setUser = function(user_data) {
+    window.localStorage.starter_facebook_user = JSON.stringify(user_data);
+  };
+  var getUser = function(){
+    return JSON.parse(window.localStorage.starter_facebook_user || '{}');
+  };
+  return {
       login: function() {
         var deferred = $q.defer();
         $http.get('/api/posts').then(function(res){
@@ -100,7 +115,9 @@ angular.module('starter.services', [])
             return 'could not get posts';
           });
         return deferred.promise;
-      }
+      },
+    getUser: getUser,
+    setUser: setUser
     }
   })
 
@@ -121,6 +138,7 @@ angular.module('starter.services', [])
 					posts[key] = post;
 				});
 			});
+      console.log(posts);
 			deferred.resolve(posts);
 		});
 		return deferred.promise;
@@ -133,12 +151,20 @@ angular.module('starter.services', [])
 	};
 
 	Posts.get = function(userId, postId) {
-		var deferred = $q.defer();
-		myRef.child(userId).child(postId).once("value", function(snapshot){
-			deferred.resolve(snapshot.val());
-		});
-		return deferred.promise;;
-	};
+    var deferred = $q.defer();
+    myRef.child(userId).child(postId).once("value", function(snapshot){
+      deferred.resolve(snapshot.val());
+    });
+    return deferred.promise;
+  };
+
+  Posts.getByUser = function(userId) {
+    var deferred = $q.defer();
+    myRef.child(userId).once("value", function(snapshot){
+      deferred.resolve(snapshot.val());
+    });
+    return deferred.promise;
+  };
 
 	Posts.set = function(post) {
 		var deferred = $q.defer();
@@ -220,4 +246,3 @@ angular.module('starter.services', [])
  		$ionicLoading.hide();
  	};
 });
-;

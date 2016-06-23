@@ -4,11 +4,11 @@
   "proxies": [
         {
               "path": "/api",
-              "proxyUrl": "http://localhost:4000/api"
+              "proxyUrl": "http://localhost:8100/api"
             },
-            {
-                          "path": "/auth",
-                          "proxyUrl": "http://localhost:4000/auth"
-                        }
+                         {
+                                       "path": "/auth/linkedin",
+                                       "proxyUrl": "http://localhost:4000/auth/linkedin"
+                                     }
       ]
 }

@@ -1,25 +1,24 @@
 <ion-view view-title="New Post">
-  <ion-content class="padding">
-    <div class="item">
-        <div class="row">
-          <div class="col col-50 col-offset-25">
-              <img class="full-image" ng-src="{{user.profileImageURL}}">
-          </div>
+    <ion-content class="has-header">
+      <div class="item item-profile">
+        <img ng-src="{{user.profileImageURL}}" alt="">
+        <h2>{{user.displayName}}</h2>
+      </div>
+      <div class="padding">
+        <div class="card">
+
+
+          <label class="item item-input">
+            <textarea ng-model="post.content" placeholder="Ask a question, request advice, post a job opening"></textarea>
+          </label>
         </div>
-        <div class="text text-center">
-          <h2>{{user.displayName}}</h2>
+      </div>
+
+        <div class="button-bar padding">
+            <button class="button button-positive" ng-click="setPost()">
+                Submit
+            </button>
         </div>
-    </div>
 
-    <label class="item item-input">
-      <textarea ng-model="post.content"  placeholder="What's on your mind?"></textarea>
-    </label>
-
-    <div class="button-bar">
-      <button class="button button-positive" ng-click="setPost()">
-        Submit
-      </button>
-    </div>
-
-  </ion-content>
+    </ion-content>
 </ion-view>

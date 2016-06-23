@@ -13,7 +13,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $authProvider) {
+.config(function($stateProvider, $urlRouterProvider, $authProvider, $ionicConfigProvider) {
   $authProvider.facebook({
     clientId: '835041403216623',
     responseType: 'token',
@@ -28,6 +28,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
     type: '2.0',
     popupOptions: { width: 580, height: 400 }
   });
+
+  $ionicConfigProvider.tabs.position('bottom');
   $stateProvider
 
   .state('tab', {
@@ -45,12 +47,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
   })
 
   .state('tab.profile', {
-    url: '/profile',
+    url: '/profile/:userId',
     views: {
       'tab-profile': {
         templateUrl: 'templates/tab-profile.html',
         controller: 'ProfileCtrl'
       }
+    },
+    params: {
+      userId: {value: null, squash: true}
     }
   })
 

@@ -1,41 +1,35 @@
-<ion-view title="Profile">
-  <ion-content padding="true" class="has-header">
-      <div class="card">
-          <div class="item item-body">
-              <div class="row">
-                  <div class="col col-50 col-offset-25">
-                      <img class="full-image" ng-src="{{user.profileImageURL}}">
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col col-50 col-offset-25 text text-center">
-                      <h2>{{user.displayName}}</h2>
-                  </div>
-              </div>
-          </div>
-      </div>
+<ion-view title="{{user.displayName}}">
+    <ion-content class="has-header">
+        <div class="list">
+            <div class="item item-profile">
+                <img ng-src="{{user.profileImageURL}}" alt="">
+                <!--<h2>{{user.displayName}}</h2>-->
+            </div>
+            <!--<div class="item item-body">
+                <div class="row">
+                    <div class="col col-50 col-offset-25">
+                        <img class="full-image" ng-src="{{user.profileImageURL}}"> sdfsdf
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-50 col-offset-25 text text-center">
+                        <h2>{{user.displayName}} pramehwar</h2>
+                    </div>
+                </div>
+            </div>-->
+        </div>
 
-
-      <div class="row">
-        <div class="col text-center">
-
-          <ion-list ng-repeat="post in posts | orderBy:'-dt_created'" >
-            <ion-item class="item item-avatar" href="#">
-              <img ng-src="{{user.profileImageURL}}">
-              <h2>{{user.displayName}}</h2>
-              <p>{{post.content}}</p>
+        <ion-list ng-repeat="(key,post) in posts | orderBy:'-dt_created'">
+            <ion-item ui-sref="tab.post-detail({userId:user.uid, postId:key})" class="item item-avatar" href="#">
+                <img ng-src="{{user.profileImageURL}}">
+                <h2>{{user.displayName}}</h2>
+                <p>{{post.content}}</p>
             </ion-item>
-          </ion-list>
+        </ion-list>
 
+        <div class="padding" ng-if="user.isOwnProfile">
+            <a href="" class="button button-full button-rounded button-assertive" ng-click="logout()">Log out</a>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col text-center">
-          <a href="" class="button button-full button-dark" ng-click="logout()">Log out</a>
-        </div>
-      </div>
-
-  </ion-content>
+    </ion-content>
 
 </ion-view>
